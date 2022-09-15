@@ -1,0 +1,12 @@
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\bin\Debug\net6.0\UniversitySystem.Domain.deps.json
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\bin\Debug\net6.0\UniversitySystem.Domain.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\bin\Debug\net6.0\ref\UniversitySystem.Domain.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\bin\Debug\net6.0\UniversitySystem.Domain.pdb
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.csproj.AssemblyReference.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.AssemblyInfoInputs.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.AssemblyInfo.cs
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\ref\UniversitySystem.Domain.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Domain\obj\Debug\net6.0\UniversitySystem.Domain.pdb

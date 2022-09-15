@@ -1,0 +1,15 @@
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\UniversitySystem.Application.deps.json
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\UniversitySystem.Application.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\ref\UniversitySystem.Application.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\UniversitySystem.Application.pdb
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.csproj.AssemblyReference.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.AssemblyInfoInputs.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.AssemblyInfo.cs
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.csproj.CoreCompileInputs.cache
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\ref\UniversitySystem.Application.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.pdb
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\UniversitySystem.Domain.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\bin\Debug\net6.0\UniversitySystem.Domain.pdb
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\Core\UniversitySystem.Application\obj\Debug\net6.0\UniversitySystem.Application.csproj.CopyComplete
