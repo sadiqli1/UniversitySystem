@@ -1,0 +1,51 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "287be6ea-2da9-45af-951d-6a53ad243c17": {
+      "ProjectGuid": "287be6ea-2da9-45af-951d-6a53ad243c17",
+      "DisplayName": "UniversitySystem.Domain",
+      "ColorIndex": 0
+    },
+    "3806f45a-7607-45a5-aa2a-c78206c94fff": {
+      "ProjectGuid": "3806f45a-7607-45a5-aa2a-c78206c94fff",
+      "DisplayName": "WebApplication2",
+      "ColorIndex": 1
+    },
+    "2d02c714-ecfc-4e05-9540-9c84fe1a1814": {
+      "ProjectGuid": "2d02c714-ecfc-4e05-9540-9c84fe1a1814",
+      "DisplayName": "WebApplication1",
+      "ColorIndex": 2
+    },
+    "40d8ca39-25cc-4d0f-bbc0-91d672eeaeb1": {
+      "ProjectGuid": "40d8ca39-25cc-4d0f-bbc0-91d672eeaeb1",
+      "DisplayName": "WebApplication3",
+      "ColorIndex": 3
+    },
+    "9702f17f-6b74-402a-aab4-e0e09b6ffefc": {
+      "ProjectGuid": "9702f17f-6b74-402a-aab4-e0e09b6ffefc",
+      "DisplayName": "WebApplication4",
+      "ColorIndex": 4
+    },
+    "1f5d784c-fea9-477f-80d2-2bb4dbc6c6da": {
+      "ProjectGuid": "1f5d784c-fea9-477f-80d2-2bb4dbc6c6da",
+      "DisplayName": "UniversitySystem.Application",
+      "ColorIndex": 5
+    },
+    "5ab275ea-32bb-49db-87d3-d15b130c10e4": {
+      "ProjectGuid": "5ab275ea-32bb-49db-87d3-d15b130c10e4",
+      "DisplayName": "UniversitySystem.Persistence",
+      "ColorIndex": 6
+    },
+    "56dccf2c-bfb0-4059-a767-8efaa208c69e": {
+      "ProjectGuid": "56dccf2c-bfb0-4059-a767-8efaa208c69e",
+      "DisplayName": "UniversitySystem.WebApi",
+      "ColorIndex": 7
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 8
+}

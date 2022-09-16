@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using UniversitySystem.Application.DTOs.Sector;
 using UniversitySystem.Application.Mapping;
@@ -15,6 +12,7 @@ namespace UniversitySystem.Application.ServiceRegistration
     {
         public static void AddApplicationServiceRegistration(this IServiceCollection services)
         {
+            var assembly = Assembly.GetExecutingAssembly();
             services.AddAutoMapper(opt =>
             {
                 opt.AddProfile(new GeneralMap());
@@ -22,6 +20,7 @@ namespace UniversitySystem.Application.ServiceRegistration
             services.AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters()
                 .AddValidatorsFromAssemblyContaining<SectorPostDto>();
+            services.AddMediatR(assembly);
         }
     }
 }

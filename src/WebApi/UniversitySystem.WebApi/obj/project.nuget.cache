@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "l2I+aDxiLEGMzVwTr7xvuPY/gmGe39cOX0awTvC8j0FlyyYV7OakL6boBG5b98PcRMYat780Ggm+reu54ZpO+g==",
+  "dgSpecHash": "ALIG+xjJ291omr4XNk/mtB/p9sdIgkj6MEtocvw6xQRbuJkiCBNv2BeraBNZg6B1e28SqprREaDbDkGn4S1scQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\isasa\\Desktop\\BackEnd\\API\\UniversitySystem\\src\\WebApi\\UniversitySystem.WebApi\\UniversitySystem.WebApi.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,9 @@
     "C:\\Users\\isasa\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.2\\fluentvalidation.dependencyinjectionextensions.11.2.2.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\isasa\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\isasa\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\isasa\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",

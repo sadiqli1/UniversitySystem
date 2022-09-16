@@ -8,6 +8,7 @@ namespace UniversitySystem.Application.DTOs.Sector
 {
     public class SectorGetItemDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

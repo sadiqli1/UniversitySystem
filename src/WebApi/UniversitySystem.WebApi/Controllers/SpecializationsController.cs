@@ -5,6 +5,9 @@ using UniversitySystem.Application.Interfaces.Repository;
 using UniversitySystem.Domain.Entities;
 using System.Linq;
 using UniversitySystem.Application.Interfaces;
+using UniversitySystem.Application.Features.Queries.SpecializationQueries;
+using MediatR;
+using UniversitySystem.Application.Features.Commands.SpecializationCommand;
 
 namespace UniversitySystem.WebApi.Controllers
 {
@@ -14,38 +17,33 @@ namespace UniversitySystem.WebApi.Controllers
     {
         private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public SpecializationsController(IUnitOfWork unit, IMapper mapper)
+        public SpecializationsController(IUnitOfWork unit, IMapper mapper, IMediator mediator)
         {
             _unit = unit;
             _mapper = mapper;
+            _mediator = mediator;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            Specialization existed = await _unit.SpecializationRepository.GetByIdAsync(id, "Sector", "Section", "Faculty");
-            if (existed == null) return StatusCode(StatusCodes.Status404NotFound);
-            SpecializationItemDto dto = _mapper.Map<SpecializationItemDto>(existed);
+            SpecializationGetQuery query = new SpecializationGetQuery(id);
+            SpecializationItemDto dto = await _mediator.Send(query); if(dto == null) return NotFound();
             return StatusCode(StatusCodes.Status200OK, dto);
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            List<Specialization> specializations = await _unit.SpecializationRepository.GetAllAsync(null ,"Sector", "Section", "Faculty");
-            if(specializations == null) return StatusCode(StatusCodes.Status404NotFound);
-            List<SpecializationItemDto> dtos = _mapper.Map<List<SpecializationItemDto>>(specializations);
-            SpecializationItemDto dto = new SpecializationItemDto();
-            return StatusCode(StatusCodes.Status200OK, dtos);
+            return StatusCode(StatusCodes.Status200OK, await _mediator.Send(new SpecializationGetAllQuery()));
         }
         [HttpPost]
         public async Task<IActionResult> Create(SpecializationPostDto dto)
         {
-            List<Specialization> existed = await _unit.SpecializationRepository.GetAllAsync(s => s.Name == dto.Name || s.Code == dto.Code);
-            if (existed != null) return BadRequest();
-            Specialization specialization = _mapper.Map<Specialization>(dto);
-            specialization.CreateAt = DateTime.Now;
-            await _unit.SpecializationRepository.AddAsync(specialization);
-            return StatusCode(StatusCodes.Status201Created, dto);
+            SpecializationCreateCommand command = new SpecializationCreateCommand() { Name = dto.Name, Code = dto.Code, Duration = dto.Duration, FacultyId = dto.FacultyId, SectionId = dto.SectionId, SectorId = dto.SectorId };
+            var a = await _mediator.Send(command);
+            if (a == 0) return BadRequest();
+            return StatusCode(StatusCodes.Status201Created, a);
         }
     }
 }

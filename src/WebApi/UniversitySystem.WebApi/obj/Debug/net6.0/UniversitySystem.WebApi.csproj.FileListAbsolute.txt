@@ -70,3 +70,6 @@ C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\MediatR.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
