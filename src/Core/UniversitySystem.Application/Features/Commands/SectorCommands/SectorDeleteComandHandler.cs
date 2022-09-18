@@ -17,8 +17,9 @@ namespace UniversitySystem.Application.Features.Commands.SectorCommands
         }
         public async Task<int> Handle(SectorDeleteCommand request, CancellationToken cancellationToken)
         {
-            Sector existed = await _unit.SectorRepository.GetByIdAsync(request.Id);
+            Sector existed = await _unit.SectorRepository.GetByIdAsync(request.Id, "Specializations");
             if (existed == null) return 0;
+            if(existed.Specializations.Count != 0) return -1;
             await _unit.SectorRepository.DeleteAsync(existed);
             return request.Id;
         }

@@ -22,11 +22,8 @@ namespace UniversitySystem.Application.Features.Commands.SectorCommands
         }
         public async Task<int> Handle(SectorCreateCommand request, CancellationToken cancellationToken)
         {
-            List<Sector> sectors = await _unit.SectorRepository.GetAllAsync(null);
-            foreach (var item in sectors)
-            {
-                if (item.Name == request.Name) return 0;
-            }
+            List<Sector> sectors = await _unit.SectorRepository.GetAllAsync(s => s.Name == request.Name);
+            if (sectors.Count != 0) return 0;
             Sector sector = _mapper.Map<Sector>(request);
             await _unit.SectorRepository.AddAsync(sector);
             return sector.Id;

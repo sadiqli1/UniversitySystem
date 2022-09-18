@@ -22,8 +22,9 @@ namespace UniversitySystem.Application.Features.Commands.SectionCommands
         }
         public async Task<int> Handle(SectionDeleteCommand request, CancellationToken cancellationToken)
         {
-            Section existed = await _unit.SectionRepository.GetByIdAsync(request.Id);
+            Section existed = await _unit.SectionRepository.GetByIdAsync(request.Id, "Specializations");
             if (existed == null) return 0;
+            if(existed.Specializations.Count != 0) return -1;
             await _unit.SectionRepository.DeleteAsync(existed);
             return request.Id;
         }

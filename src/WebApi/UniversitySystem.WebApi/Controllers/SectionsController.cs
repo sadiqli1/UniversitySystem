@@ -17,7 +17,7 @@ namespace UniversitySystem.WebApi.Controllers
     {
         private readonly IMediator _mediator;
 
-        public SectionsController(Mediator mediator)
+        public SectionsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -55,6 +55,11 @@ namespace UniversitySystem.WebApi.Controllers
         {
             SectionDeleteCommand command = new SectionDeleteCommand(id);
             int value = await _mediator.Send(command);if(value == 0) return NotFound();
+            if(value == -1) return BadRequest(new
+            {
+                code = "relation",
+                description = "related to some information"
+            });
             return StatusCode(StatusCodes.Status200OK, value);
         }
     }

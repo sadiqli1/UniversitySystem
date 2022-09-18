@@ -15,14 +15,10 @@ namespace UniversitySystem.WebApi.Controllers
     [ApiController]
     public class SpecializationsController : ControllerBase
     {
-        private readonly IUnitOfWork _unit;
-        private readonly IMapper _mapper;
         private readonly IMediator _mediator;
 
-        public SpecializationsController(IUnitOfWork unit, IMapper mapper, IMediator mediator)
+        public SpecializationsController(IMediator mediator)
         {
-            _unit = unit;
-            _mapper = mapper;
             _mediator = mediator;
         }
         [HttpGet("{id}")]
@@ -41,9 +37,26 @@ namespace UniversitySystem.WebApi.Controllers
         public async Task<IActionResult> Create(SpecializationPostDto dto)
         {
             SpecializationCreateCommand command = new SpecializationCreateCommand() { Name = dto.Name, Code = dto.Code, Duration = dto.Duration, FacultyId = dto.FacultyId, SectionId = dto.SectionId, SectorId = dto.SectorId };
-            var a = await _mediator.Send(command);
-            if (a == 0) return BadRequest();
-            return StatusCode(StatusCodes.Status201Created, a);
+            var value = await _mediator.Send(command);
+            if (value == 0) return BadRequest();
+            return StatusCode(StatusCodes.Status201Created, value);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(int id, SpecializationPostDto dto)
+        {
+            SpecializationUpdateCommand command = new SpecializationUpdateCommand(id) { Name = dto.Name, Code = dto.Code, Duration = dto.Duration, FacultyId = dto.FacultyId, SectionId = dto.SectionId, SectorId = dto.SectorId};
+            int value = await _mediator.Send(command);
+            if(value == 0) return BadRequest();
+            return Ok(value);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            int value = await _mediator.Send(new SpecializationDeleteCommand(id));
+            if(value == 0) return NotFound();
+            return Ok(value);
         }
     }
 }

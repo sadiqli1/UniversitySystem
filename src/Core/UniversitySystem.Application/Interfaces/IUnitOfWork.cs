@@ -12,6 +12,7 @@ namespace UniversitySystem.Application.Interfaces
         public ISectorRepository SectorRepository { get;}
         public ISectionRepository SectionRepository { get;}
         public ISpecializationRepository SpecializationRepository { get;}
+        public IFacultyRepository FacultyRepository { get;}
         Task SaveChangesAsync();
     }
 }

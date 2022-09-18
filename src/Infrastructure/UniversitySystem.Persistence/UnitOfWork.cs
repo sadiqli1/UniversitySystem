@@ -12,6 +12,8 @@ namespace UniversitySystem.Persistence
         public ISectorRepository SectorRepository { get => new SectorRepository(_context) ?? throw new NotImplementedException();}
         public ISectionRepository SectionRepository { get => new SectionRepository(_context) ?? throw new NotImplementedException();}
         public ISpecializationRepository SpecializationRepository { get => new SpecializationRepository(_context) ?? throw new NotImplementedException();}
+        public IFacultyRepository FacultyRepository { get => new FacultyRepository(_context) ?? throw new NotImplementedException();}
+
         public UnitOfWork(UniversityDbContext context)
         {
             _context = context;

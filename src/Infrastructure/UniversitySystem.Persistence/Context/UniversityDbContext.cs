@@ -46,6 +46,7 @@ namespace UniversitySystem.Persistence.Context
         {
             modelBuilder.ApplyConfiguration(new SectorConfiguration());
             modelBuilder.ApplyConfiguration(new SectionConfiguration());
+            modelBuilder.ApplyConfiguration(new FacultyConfiguration());
             modelBuilder.Entity<Lesson>().HasOne(x => x.Group).WithMany(x => x.Lessons).HasForeignKey(x => x.GroupId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Student>().HasOne(x => x.Group).WithMany(x => x.Students).HasForeignKey(x => x.GroupId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Teacher>().HasOne(x => x.Duty).WithMany(x => x.Teachers).HasForeignKey(x => x.DutyId).OnDelete(DeleteBehavior.NoAction);

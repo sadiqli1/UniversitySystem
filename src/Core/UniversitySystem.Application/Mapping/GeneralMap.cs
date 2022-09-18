@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using UniversitySystem.Application.DTOs.Faculty;
 using UniversitySystem.Application.DTOs.Section;
 using UniversitySystem.Application.DTOs.Sector;
 using UniversitySystem.Application.DTOs.Specialization;
+using UniversitySystem.Application.Features.Commands.FacultyCommands;
 using UniversitySystem.Application.Features.Commands.SectionCommands;
 using UniversitySystem.Application.Features.Commands.SectorCommands;
 using UniversitySystem.Application.Features.Commands.SpecializationCommand;
@@ -14,11 +16,7 @@ namespace UniversitySystem.Application.Mapping
         public GeneralMap()
         {
             CreateMap<Sector, SectorGetItemDto>();
-            //CreateMap<Sector, SectorPostDto>()
-            //    .ReverseMap();
             CreateMap<Section, SectionItemDto>();
-            //CreateMap<Section, SectionPostDto>()
-            //    .ReverseMap();
             CreateMap<Specialization, SpecializationItemDto>();
             CreateMap<Sector, SectorInSpecializationItemDto>();
             CreateMap<Section, SectionInSpecializationItemDto>();
@@ -30,6 +28,11 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<Section, SectionCreateCommand>()
                 .ReverseMap();
             CreateMap<Specialization, SpecializationCreateCommand>()
+                .ReverseMap();
+            CreateMap<Specialization, SpecializationUpdateCommand>()
+                .ReverseMap();
+            CreateMap<Faculty, FacultyItemDto>();
+            CreateMap<Faculty, FacultyCreateCommand>()
                 .ReverseMap();
         }
     }
