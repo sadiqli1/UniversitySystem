@@ -13,6 +13,5 @@ namespace UniversitySystem.Domain.Entities
         public string Code { get; set; }
         public List<Specialization> Specializations { get; set; }
         public List<Teacher> Teachers { get; set; }
-        public List<Lesson> Lessons { get; set; }
     }
 }

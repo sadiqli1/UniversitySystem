@@ -13,5 +13,6 @@ namespace UniversitySystem.Domain.Entities
         public List<Teacher> Teachers { get; set; }
         public List<Student> Students { get; set; }
         public List<Librarian> Librarians { get; set; }
+        public List<EducationDepartment> EducationDepartments { get; set; }
     }
 }
