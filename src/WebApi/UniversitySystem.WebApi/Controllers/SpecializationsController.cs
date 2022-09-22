@@ -56,6 +56,11 @@ namespace UniversitySystem.WebApi.Controllers
         {
             int value = await _mediator.Send(new SpecializationDeleteCommand(id));
             if(value == 0) return NotFound();
+            if(value == -1) return BadRequest(new
+            {
+                code = "relation",
+                description = "related to some information"
+            });
             return Ok(value);
         }
     }

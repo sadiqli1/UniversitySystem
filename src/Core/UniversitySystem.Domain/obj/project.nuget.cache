@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qR5d5dqogzECUeccih/4iOWfPV/miKE1H6Uf7i3HICbEbLCGEFdVCqclvNUeA3f8j3Lm3d74QU0V/1PrM0PLeg==",
+  "dgSpecHash": "UVx23uqxoEqhJnOEX1e7mHk4XxVB40BFDdzaORv84D3kVi+O9Wjne8yatFoL/N3vnXXlaVAvXhePQexVjDUeSQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\isasa\\Desktop\\BackEnd\\API\\UniversitySystem\\src\\Core\\UniversitySystem.Domain\\UniversitySystem.Domain.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\isasa\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\isasa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"

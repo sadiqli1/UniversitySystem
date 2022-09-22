@@ -24,11 +24,10 @@ namespace UniversitySystem.Application.Features.Commands.SectionCommands
         {
             Section existed = await _unit.SectionRepository.GetByIdAsync(request.Id);
             if (existed == null) return 0;
-            List<Section> sections = await _unit.SectionRepository.GetAllAsync(null);
-            foreach (var item in sections)
-            {
-                if (item.Name == request.Name && existed.Name != request.Name || item.Code == request.Code && existed.Code != request.Code) return 0;
-            }
+            List<Section> sections = await _unit.SectionRepository
+                .GetAllAsync(s => s.Name.Trim().ToLower() == request.Name.Trim().ToLower() && existed.Name.Trim().ToLower() != request.Name.Trim().ToLower() 
+                || s.Code.Trim().ToLower() == request.Code.Trim().ToLower() && existed.Code.Trim().ToLower() != request.Code.Trim().ToLower());
+            if (sections.Count != 0) return 0;
             await _unit.SectionRepository.UpdateAsync(existed);
             existed.Name = request.Name;
             existed.Code = request.Code;

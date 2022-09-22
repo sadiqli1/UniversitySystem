@@ -25,7 +25,8 @@ namespace UniversitySystem.Application.Features.Commands.SectorCommands
         {
             Sector existed = await _unit.SectorRepository.GetByIdAsync(request.Id);
             if (existed == null) return 0;
-            List<Sector> sectors = await _unit.SectorRepository.GetAllAsync(s => s.Name == request.Name && existed.Name != request.Name);
+            List<Sector> sectors = await _unit.SectorRepository
+                .GetAllAsync(s => s.Name.Trim().ToLower() == request.Name.Trim().ToLower() && existed.Name.Trim().ToLower() != request.Name.Trim().ToLower());
             if (sectors.Count != 0) return 0;
             await _unit.SectorRepository.UpdateAsync(existed);
             existed.Name = request.Name;

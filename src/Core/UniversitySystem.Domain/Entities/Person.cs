@@ -9,7 +9,7 @@ namespace UniversitySystem.Domain.Entities
         public string FatherName { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime BirthDay { get; set; }
-        public int PersonalNumber { get; set; }
+        public string PersonalNumber { get; set; }
         public Student Student { get; set; }
         public Teacher Teacher { get; set; }
         public Librarian Librarian { get; set; }

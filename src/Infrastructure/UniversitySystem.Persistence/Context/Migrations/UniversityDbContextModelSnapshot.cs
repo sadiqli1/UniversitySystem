@@ -182,7 +182,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("DutyId");
 
-                    b.ToTable("Announcements", (string)null);
+                    b.ToTable("Announcements");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Book", b =>
@@ -238,7 +238,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Course", b =>
@@ -257,7 +257,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Duty", b =>
@@ -273,7 +273,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Duties", (string)null);
+                    b.ToTable("Duties");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.EducationDepartment", b =>
@@ -298,7 +298,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[PersonId] IS NOT NULL");
 
-                    b.ToTable("EducationDepartments", (string)null);
+                    b.ToTable("EducationDepartments");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Faculty", b =>
@@ -319,7 +319,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[Name] IS NOT NULL");
 
-                    b.ToTable("Faculties", (string)null);
+                    b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Group", b =>
@@ -350,7 +350,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Groups", (string)null);
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Journal", b =>
@@ -391,7 +391,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Journals", (string)null);
+                    b.ToTable("Journals");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Language", b =>
@@ -407,7 +407,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages", (string)null);
+                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Lesson", b =>
@@ -450,7 +450,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Librarian", b =>
@@ -480,7 +480,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[PersonId] IS NOT NULL");
 
-                    b.ToTable("Librarians", (string)null);
+                    b.ToTable("Librarians");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Library", b =>
@@ -496,7 +496,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Libraries", (string)null);
+                    b.ToTable("Libraries");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.OnlineService", b =>
@@ -512,7 +512,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OnlineServices", (string)null);
+                    b.ToTable("OnlineServices");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.ParticipationList", b =>
@@ -538,7 +538,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("ParticipationLists", (string)null);
+                    b.ToTable("ParticipationLists");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Person", b =>
@@ -590,8 +590,8 @@ namespace UniversitySystem.Persistence.Context.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonalNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PersonalNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -677,7 +677,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("PointLists", (string)null);
+                    b.ToTable("PointLists");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Reference", b =>
@@ -713,7 +713,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("References", (string)null);
+                    b.ToTable("References");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.ReferenceType", b =>
@@ -729,7 +729,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReferenceTypes", (string)null);
+                    b.ToTable("ReferenceTypes");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Room", b =>
@@ -750,7 +750,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("LibraryId");
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Section", b =>
@@ -779,7 +779,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[Name] IS NOT NULL");
 
-                    b.ToTable("Sections", (string)null);
+                    b.ToTable("Sections");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Sector", b =>
@@ -800,7 +800,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[Name] IS NOT NULL");
 
-                    b.ToTable("Sectors", (string)null);
+                    b.ToTable("Sectors");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Specialization", b =>
@@ -840,7 +840,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("SectorId");
 
-                    b.ToTable("Specializations", (string)null);
+                    b.ToTable("Specializations");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Student", b =>
@@ -888,7 +888,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsUnique()
                         .HasFilter("[PersonId] IS NOT NULL");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Teacher", b =>
@@ -918,7 +918,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("SectionId");
 
-                    b.ToTable("Teachers", (string)null);
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Transcript", b =>
@@ -946,7 +946,7 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Transcripts", (string)null);
+                    b.ToTable("Transcripts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

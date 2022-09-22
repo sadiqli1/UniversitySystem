@@ -78,3 +78,9 @@ C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\isasa\Desktop\BackEnd\API\UniversitySystem\src\WebApi\UniversitySystem.WebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

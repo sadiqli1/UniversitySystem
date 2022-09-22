@@ -22,11 +22,9 @@ namespace UniversitySystem.Application.Features.Commands.SectionCommands
         }
         public async Task<SectionCreateCommand> Handle(SectionCreateCommand request, CancellationToken cancellationToken)
         {
-            List<Section> sections = await _unit.SectionRepository.GetAllAsync(null);
-            foreach (var item in sections)
-            {
-                if (item.Name == request.Name || item.Code == request.Code) return null;
-            }
+            List<Section> sections = await _unit.SectionRepository
+                .GetAllAsync(s => s.Name.Trim().ToLower() == request.Name.Trim().ToLower() || s.Code.Trim().ToLower() == request.Code.Trim().ToLower());
+            if (sections.Count != 0) return null;
             Section section = _mapper.Map<Section>(request);
             await _unit.SectionRepository.AddAsync(section);
             return request;

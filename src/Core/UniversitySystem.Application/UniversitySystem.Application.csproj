@@ -13,6 +13,10 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.23.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
   </ItemGroup>
 
   <ItemGroup>

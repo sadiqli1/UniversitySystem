@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using UniversitySystem.Application.DTOs.Account;
 using UniversitySystem.Application.DTOs.Faculty;
 using UniversitySystem.Application.DTOs.Section;
 using UniversitySystem.Application.DTOs.Sector;
@@ -34,6 +35,7 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<Faculty, FacultyItemDto>();
             CreateMap<Faculty, FacultyCreateCommand>()
                 .ReverseMap();
+            CreateMap<Person, PersonRegisterDto>();
         }
     }
 }

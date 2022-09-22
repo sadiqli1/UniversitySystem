@@ -24,7 +24,9 @@ namespace UniversitySystem.Application.Features.Commands.SpecializationCommand
         {
             Specialization existed = await _unit.SpecializationRepository.GetByIdAsync(request.Id);
             if (existed == null) return 0;
-            List<Specialization> specializations = await _unit.SpecializationRepository.GetAllAsync(s => s.Name == request.Name || s.Code == request.Code);
+            List<Specialization> specializations = await _unit.SpecializationRepository
+                .GetAllAsync(s => s.Name.Trim().ToLower() == request.Name.Trim().ToLower() && existed.Name.Trim().ToLower() 
+                != request.Name.Trim().ToLower() || s.Code == request.Code && existed.Code != request.Code);
             if(specializations.Count != 0) return 0;
             await _unit.SpecializationRepository.UpdateAsync(existed);
             Specialization specialization = _mapper.Map<Specialization>(request);

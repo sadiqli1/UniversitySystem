@@ -19,8 +19,9 @@ namespace UniversitySystem.Application.Features.Commands.SpecializationCommand
         }
         public async Task<int> Handle(SpecializationDeleteCommand request, CancellationToken cancellationToken)
         {
-            Specialization existed = await _unit.SpecializationRepository.GetByIdAsync(request.Id);
+            Specialization existed = await _unit.SpecializationRepository.GetByIdAsync(request.Id, "Groups");
             if (existed == null) return 0;
+            if (existed.Groups != null) return -1;
             await _unit.SpecializationRepository.DeleteAsync(existed);
             return request.Id;
         }

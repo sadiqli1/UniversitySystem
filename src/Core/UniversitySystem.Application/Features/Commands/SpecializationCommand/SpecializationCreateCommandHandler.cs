@@ -23,7 +23,8 @@ namespace UniversitySystem.Application.Features.Commands.SpecializationCommand
         }
         public async Task<int> Handle(SpecializationCreateCommand request, CancellationToken cancellationToken)
         {
-            List<Specialization> existed = await _unit.SpecializationRepository.GetAllAsync(s => s.Name == request.Name || s.Code == request.Code);
+            List<Specialization> existed = await _unit.SpecializationRepository
+                .GetAllAsync(s => s.Name.Trim().ToLower() == request.Name.Trim().ToLower() || s.Code == request.Code);
             if (existed.Count != 0) return 0;
             Specialization specialization = _mapper.Map<Specialization>(request);
             specialization.CreateAt = DateTime.Now;
