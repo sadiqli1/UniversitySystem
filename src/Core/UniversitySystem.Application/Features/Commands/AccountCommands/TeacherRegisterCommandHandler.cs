@@ -46,7 +46,7 @@ namespace UniversitySystem.Application.Features.Commands.AccountCommands
 
             IdentityResult result = await _usermanager.CreateAsync(person, request.Password);
 
-            if (!result.Succeeded) return null;
+            if (!result.Succeeded) throw new NotSucceededException(result.Errors.ToList());
 
             IdentityResult resultRole = await _usermanager.AddToRoleAsync(person, "Teacher");
             if(!resultRole.Succeeded) return null;

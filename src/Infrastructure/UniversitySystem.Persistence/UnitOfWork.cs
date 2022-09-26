@@ -13,7 +13,11 @@ namespace UniversitySystem.Persistence
         public ISectionRepository SectionRepository { get => new SectionRepository(_context) ?? throw new NotImplementedException();}
         public ISpecializationRepository SpecializationRepository { get => new SpecializationRepository(_context) ?? throw new NotImplementedException();}
         public IFacultyRepository FacultyRepository { get => new FacultyRepository(_context) ?? throw new NotImplementedException();}
-
+        public IGroupRepository GroupRepository { get => new GroupRepository(_context) ?? throw new NotImplementedException(); }
+        public ICourseRepository CourseRepository { get => new CourseRepository(_context) ?? throw new NotImplementedException(); }
+        public ITeacherRepository TeacherRepository { get => new TeacherRepository(_context) ?? throw new NotImplementedException(); }
+        public ILessonRepository LessonRepository { get => new LessonRepository(_context) ?? throw new NotImplementedException(); }
+        public ILessonDayHourRepository LessonDayHourRepository { get => new LessonDayHourRepository(_context) ?? throw new NotImplementedException(); }
         public UnitOfWork(UniversityDbContext context)
         {
             _context = context;

@@ -35,6 +35,10 @@ namespace UniversitySystem.Persistence.Context
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Librarian> Librarians { get; set; }
         public DbSet<EducationDepartment> EducationDepartments { get; set; }
+        public DbSet<Day> Days { get; set; }
+        public DbSet<Hour> Hours { get; set; }
+        public DbSet<DayHour> DayHours { get; set; }
+        public DbSet<LessonDayHour> LessonDayHours { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +47,8 @@ namespace UniversitySystem.Persistence.Context
             modelBuilder.ApplyConfiguration(new SectionConfiguration());
             modelBuilder.ApplyConfiguration(new FacultyConfiguration());
             modelBuilder.ApplyConfiguration(new PersonRegisterConfiguration());
+            modelBuilder.ApplyConfiguration(new GroupConfiguration());
+            modelBuilder.ApplyConfiguration(new LessonConfiguration());
 
             modelBuilder.Entity<Lesson>().HasOne(x => x.Group).WithMany(x => x.Lessons).HasForeignKey(x => x.GroupId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Student>().HasOne(x => x.Group).WithMany(x => x.Students).HasForeignKey(x => x.GroupId).OnDelete(DeleteBehavior.NoAction);

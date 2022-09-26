@@ -46,6 +46,15 @@ namespace UniversitySystem.WebApi.Controllers
 
             return StatusCode(StatusCodes.Status201Created, dto);
         }
+        [HttpPost("educationdepartmentregister")]
+        public async Task<IActionResult> EducationDepartmentRegister(EducationDepartmentRegisterCommand command)
+        {
+            PersonRegisterDto dto = await _mediator.Send(command);
+
+            if (dto == null) return BadRequest();
+
+            return StatusCode(StatusCodes.Status201Created, dto);
+        }
 
         #region
         //[HttpGet]

@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using UniversitySystem.Application.Middlewares;
 using UniversitySystem.Application.ServiceRegistration;
 using UniversitySystem.Persistence.ServiceRegistration;
 
@@ -27,13 +28,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionHandlerMiddlewear>();
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-//app.UseMiddleware<ExceptionHandlerMiddlewear>();
 
 app.MapControllers();
 

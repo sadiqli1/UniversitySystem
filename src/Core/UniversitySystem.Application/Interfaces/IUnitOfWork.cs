@@ -13,6 +13,11 @@ namespace UniversitySystem.Application.Interfaces
         public ISectionRepository SectionRepository { get;}
         public ISpecializationRepository SpecializationRepository { get;}
         public IFacultyRepository FacultyRepository { get;}
+        public IGroupRepository GroupRepository { get; }
+        public ICourseRepository CourseRepository { get; }
+        public ITeacherRepository TeacherRepository { get; }
+        public ILessonRepository LessonRepository { get; }
+        public ILessonDayHourRepository LessonDayHourRepository{ get; }
         Task SaveChangesAsync();
     }
 }
