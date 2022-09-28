@@ -185,6 +185,37 @@ namespace UniversitySystem.Persistence.Context.Migrations
                     b.ToTable("Announcements");
                 });
 
+            modelBuilder.Entity("UniversitySystem.Domain.Entities.Attendance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LessonScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.HasIndex("LessonScheduleId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Attendances");
+                });
+
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
@@ -536,6 +567,27 @@ namespace UniversitySystem.Persistence.Context.Migrations
                     b.HasIndex("LessonId");
 
                     b.ToTable("LessonDayHours");
+                });
+
+            modelBuilder.Entity("UniversitySystem.Domain.Entities.LessonSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.ToTable("LessonSchedules");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Librarian", b =>
@@ -1096,6 +1148,33 @@ namespace UniversitySystem.Persistence.Context.Migrations
                     b.Navigation("Duty");
                 });
 
+            modelBuilder.Entity("UniversitySystem.Domain.Entities.Attendance", b =>
+                {
+                    b.HasOne("UniversitySystem.Domain.Entities.Lesson", "Lesson")
+                        .WithMany("Attendances")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversitySystem.Domain.Entities.LessonSchedule", "LessonSchedule")
+                        .WithMany("Attendances")
+                        .HasForeignKey("LessonScheduleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("UniversitySystem.Domain.Entities.Student", "Student")
+                        .WithMany("Attendances")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lesson");
+
+                    b.Navigation("LessonSchedule");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Book", b =>
                 {
                     b.HasOne("UniversitySystem.Domain.Entities.Language", "Language")
@@ -1239,6 +1318,17 @@ namespace UniversitySystem.Persistence.Context.Migrations
                         .IsRequired();
 
                     b.Navigation("DayHour");
+
+                    b.Navigation("Lesson");
+                });
+
+            modelBuilder.Entity("UniversitySystem.Domain.Entities.LessonSchedule", b =>
+                {
+                    b.HasOne("UniversitySystem.Domain.Entities.Lesson", "Lesson")
+                        .WithMany("LessonSchedules")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Lesson");
                 });
@@ -1514,9 +1604,18 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Lesson", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("LessonDayHours");
 
+                    b.Navigation("LessonSchedules");
+
                     b.Navigation("PointLists");
+                });
+
+            modelBuilder.Entity("UniversitySystem.Domain.Entities.LessonSchedule", b =>
+                {
+                    b.Navigation("Attendances");
                 });
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Library", b =>
@@ -1575,6 +1674,8 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
             modelBuilder.Entity("UniversitySystem.Domain.Entities.Student", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("PointLists");
 
                     b.Navigation("References");

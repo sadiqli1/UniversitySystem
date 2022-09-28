@@ -18,6 +18,10 @@ namespace UniversitySystem.Application.Interfaces
         public ITeacherRepository TeacherRepository { get; }
         public ILessonRepository LessonRepository { get; }
         public ILessonDayHourRepository LessonDayHourRepository{ get; }
+        public IAttendanceRepository AttendanceRepository { get; }
+        public ILessonScheduleRepository LessonScheduleRepository { get; }
+        public IDayHourRepository DayHourRepository { get; }
+        public IStudentRepository StudentRepository { get; }
         Task SaveChangesAsync();
     }
 }

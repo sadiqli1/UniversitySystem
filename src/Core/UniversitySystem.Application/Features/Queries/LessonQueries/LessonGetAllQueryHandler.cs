@@ -18,7 +18,7 @@ namespace UniversitySystem.Application.Features.Queries.LessonQueries
         }
         public async Task<List<LessonItemDto>> Handle(LessonGetAllQuery request, CancellationToken cancellationToken)
         {
-            List<Lesson> lessons = await _unit.LessonRepository.GetAllAsync(null);
+            List<Lesson> lessons = await _unit.LessonRepository.GetAllAsync(null, "Group", "Course", "Teacher", "Teacher.Person", "LessonDayHours", "LessonDayHours.DayHour", "LessonDayHours.DayHour.Day", "LessonDayHours.DayHour.Hour", "LessonSchedules");
             if (lessons == null) return null;
             List<LessonItemDto> dtos = _mapper.Map<List<LessonItemDto>>(lessons);
             return dtos;

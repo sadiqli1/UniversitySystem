@@ -14,10 +14,5 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
         public int CourseId { get; set; }
         public int TeacherId { get; set; }
         public List<int> DayHourIds { get; set; }
-        //public DayHourInLesson LessonDayHour { get; set; }
-        //public LessonUpdateCommand(int id)
-        //{
-        //    Id = id;
-        //}
     }
 }

@@ -39,6 +39,8 @@ namespace UniversitySystem.Persistence.Context
         public DbSet<Hour> Hours { get; set; }
         public DbSet<DayHour> DayHours { get; set; }
         public DbSet<LessonDayHour> LessonDayHours { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<LessonSchedule> LessonSchedules { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,6 +56,7 @@ namespace UniversitySystem.Persistence.Context
             modelBuilder.Entity<Student>().HasOne(x => x.Group).WithMany(x => x.Students).HasForeignKey(x => x.GroupId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Teacher>().HasOne(x => x.Duty).WithMany(x => x.Teachers).HasForeignKey(x => x.DutyId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Teacher>().HasOne(x => x.Section).WithMany(x => x.Teachers).HasForeignKey(x => x.SectionId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Attendance>().HasOne(x => x.LessonSchedule).WithMany(x => x.Attendances).HasForeignKey(x => x.LessonScheduleId).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Person>().HasOne(p => p.EducationDepartment).WithOne(p => p.Person).HasForeignKey<EducationDepartment>(e => e.PersonId);
             modelBuilder.Entity<Person>().HasOne(p => p.Librarian).WithOne(p => p.Person).HasForeignKey<Librarian>(e => e.PersonId);

@@ -26,5 +26,6 @@ namespace UniversitySystem.Domain.Entities
         public List<Reference> References { get; set; }
         public string PersonId { get; set; }
         public Person Person { get; set; }
+        public List<Attendance> Attendances { get; set; }
     }
 }

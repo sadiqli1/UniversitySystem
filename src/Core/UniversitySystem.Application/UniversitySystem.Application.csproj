@@ -23,4 +23,8 @@
     <ProjectReference Include="..\UniversitySystem.Domain\UniversitySystem.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CustomException\AttendanceEx\" />
+  </ItemGroup>
+
 </Project>

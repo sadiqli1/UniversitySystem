@@ -22,5 +22,7 @@ namespace UniversitySystem.Domain.Entities
         public Teacher Teacher { get; set; }
         public List<PointList> PointLists { get; set; }
         public List<LessonDayHour> LessonDayHours { get; set; }
+        public List<Attendance> Attendances { get; set; }
+        public List<LessonSchedule> LessonSchedules { get; set; }
     }
 }

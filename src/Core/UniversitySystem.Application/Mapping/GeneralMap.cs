@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using UniversitySystem.Application.DTOs.Account;
+using UniversitySystem.Application.DTOs.Attendance;
 using UniversitySystem.Application.DTOs.Faculty;
 using UniversitySystem.Application.DTOs.Group;
 using UniversitySystem.Application.DTOs.Lesson;
 using UniversitySystem.Application.DTOs.Section;
 using UniversitySystem.Application.DTOs.Sector;
 using UniversitySystem.Application.DTOs.Specialization;
+using UniversitySystem.Application.Features.Commands.AttendanceCommands;
 using UniversitySystem.Application.Features.Commands.FacultyCommands;
 using UniversitySystem.Application.Features.Commands.GroupCommands;
 using UniversitySystem.Application.Features.Commands.LessonCommands;
@@ -60,6 +62,14 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<Course, CourseInLessonItemDto>();
             CreateMap<Teacher, TeacherInLessonItemDto>();
             CreateMap<Person, PersonInTeacherInLessonItemDto>();
+            CreateMap<LessonDayHour, LessonDayHourInDto>();
+            CreateMap<DayHour, DayHourInLessonDayHourInDto>();
+            CreateMap<Day, DayInDto>();
+            CreateMap<Hour, HourInDto>();
+            CreateMap<Attendance, AttendanceCreateCommand>()
+                .ReverseMap();
+            CreateMap<LessonSchedule, LessonScheduleInLessonItemDto>();
+            CreateMap<AttendanceUpdateItemDto, AttendanceUpdateCommand>();
         }
     }
 }
