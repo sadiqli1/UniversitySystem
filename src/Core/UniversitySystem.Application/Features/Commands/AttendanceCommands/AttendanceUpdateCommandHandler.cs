@@ -19,6 +19,26 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
             await _unit.AttendanceRepository.UpdateAsync(attendance);
             attendance.Status = request.Status;
             await _unit.SaveChangesAsync();
+
+            List<PointList> points = await _unit.PointListRepository.GetAllAsync(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
+            foreach (PointList point in points)
+            {
+                await _unit.PointListRepository.UpdateAsync(point);
+                if (attendance.Status == true)
+                {
+                    point.AttendanceCount -= 1;
+                    int a = 100 / point.Lesson.LessonHour;
+                    point.AttendancePoint += Convert.ToByte(a);
+                }
+                if (attendance.Status == false)
+                {
+                    point.AttendanceCount += 1;
+                    int a = 100 / point.Lesson.LessonHour;
+                    point.AttendancePoint -= Convert.ToByte(a);
+                }
+                await _unit.SaveChangesAsync();
+            }
+
             return attendance.Id;
         }
     }

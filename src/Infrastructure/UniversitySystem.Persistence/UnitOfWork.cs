@@ -22,6 +22,7 @@ namespace UniversitySystem.Persistence
         public ILessonScheduleRepository LessonScheduleRepository { get => new LessonScheduleRepository(_context) ?? throw new NotImplementedException(); }
         public IDayHourRepository DayHourRepository { get => new DayHourRepository(_context) ?? throw new NotImplementedException(); }
         public IStudentRepository StudentRepository { get => new StudentRepository(_context) ?? throw new NotImplementedException(); }
+        public IPointListRepository PointListRepository { get => new PointListRepository(_context) ?? throw new NotImplementedException(); }
         public UnitOfWork(UniversityDbContext context)
         {
             _context = context;

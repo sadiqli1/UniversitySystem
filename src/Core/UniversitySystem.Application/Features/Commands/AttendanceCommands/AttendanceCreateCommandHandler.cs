@@ -18,23 +18,6 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
         }
         public async Task<int> Handle(AttendanceCreateCommand request, CancellationToken cancellationToken)
         {
-            #region MyRegion
-            //List<LessonDayHour> dayHours = await _unit.LessonDayHourRepository.GetAllAsync(l => l.LessonId == request.LessonId, "DayHour", "DayHour.Day"); 
-            //if(dayHours.Count == 0) return 0;
-
-            //foreach (LessonDayHour dayHour in dayHours)
-            //{
-            //    if (dayHour.DayHour.Day.Name.ToString() != DateTime.Now.DayOfWeek.ToString())
-            //    {
-            //        return -1;
-            //    }
-            //}
-
-            //Attendance attendance = _mapper.Map<Attendance>(request);
-            //await _unit.AttendanceRepository.AddAsync(attendance);
-            //return attendance.Id;
-            #endregion
-
             List<Attendance> attendances = await _unit.AttendanceRepository
                 .GetAllAsync(a => a.StudentId == request.StudentId && a.LessonScheduleId == request.LessonScheduleId && a.LessonId == request.LessonId);
             if(attendances.Count != 0) return -3;
@@ -54,6 +37,20 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
 
             Attendance attendance = _mapper.Map<Attendance>(request);
             await _unit.AttendanceRepository.AddAsync(attendance);
+
+            List<PointList> points = await _unit.PointListRepository.GetAllAsync(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
+            foreach (PointList point in points)
+            {
+                await _unit.PointListRepository.UpdateAsync(point);
+                if(attendance.Status == false)
+                {
+                    point.AttendanceCount += 1;
+                    int a = 100 / point.Lesson.LessonHour;
+                    point.AttendancePoint -= Convert.ToByte(a);
+                }
+                await _unit.SaveChangesAsync();
+            }
+
             return attendance.Id;
         }
     }

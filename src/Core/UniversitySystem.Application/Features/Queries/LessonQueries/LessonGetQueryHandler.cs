@@ -18,7 +18,8 @@ namespace UniversitySystem.Application.Features.Queries.LessonQueries
         }
         public async Task<LessonItemDto> Handle(LessonGetQuery request, CancellationToken cancellationToken)
         {
-            Lesson existed = await _unit.LessonRepository.GetByIdAsync(request.Id, "Group", "Course", "Teacher", "Teacher.Person", "LessonDayHours", "LessonDayHours.DayHour", "LessonDayHours.DayHour.Day", "LessonDayHours.DayHour.Hour", "LessonSchedules");
+            Lesson existed = await _unit.LessonRepository
+                .GetByIdAsync(request.Id, "Group", "Course", "Teacher", "Teacher.Person", "LessonDayHours", "LessonDayHours.DayHour", "LessonDayHours.DayHour.Day", "LessonDayHours.DayHour.Hour", "LessonSchedules", "PointLists");
             if (existed == null) return null;
             LessonItemDto dto = _mapper.Map<LessonItemDto>(existed);
             dto.Hour = existed.LessonSchedules.Count();

@@ -70,6 +70,7 @@ namespace UniversitySystem.Application.Mapping
                 .ReverseMap();
             CreateMap<LessonSchedule, LessonScheduleInLessonItemDto>();
             CreateMap<AttendanceUpdateItemDto, AttendanceUpdateCommand>();
+            CreateMap<PointList, PoinListInLessonItemDto>();
         }
     }
 }

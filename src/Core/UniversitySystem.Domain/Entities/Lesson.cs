@@ -14,6 +14,7 @@ namespace UniversitySystem.Domain.Entities
         public int Ects { get; set; }
         public int Theory { get; set; }
         public int Practice { get; set; }
+        public int LessonHour { get; set; }
         public int GroupId { get; set; }
         public Group Group { get; set; }
         public int CourseId { get; set; }

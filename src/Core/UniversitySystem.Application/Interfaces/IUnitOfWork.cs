@@ -22,6 +22,7 @@ namespace UniversitySystem.Application.Interfaces
         public ILessonScheduleRepository LessonScheduleRepository { get; }
         public IDayHourRepository DayHourRepository { get; }
         public IStudentRepository StudentRepository { get; }
+        public IPointListRepository PointListRepository { get; }
         Task SaveChangesAsync();
     }
 }

@@ -21,7 +21,7 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
         public async Task<int> Handle(LessonCreateCommand request, CancellationToken cancellationToken)
         {
             Course course = await _unit.CourseRepository.GetByIdAsync(request.CourseId);
-            Group group = await _unit.GroupRepository.GetByIdAsync(request.GroupId);
+            Group group = await _unit.GroupRepository.GetByIdAsync(request.GroupId, "Students");
             Teacher teacher = await _unit.TeacherRepository.GetByIdAsync(request.TeacherId);
             List<DayHour> dayHours = await _unit.DayHourRepository.GetAllAsync(d => request.DayHourIds.Any(r => r == d.Id));
 
@@ -34,6 +34,19 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
             await CreateDayHour(request.DayHourIds, lesson.Id);
 
             await CreateLessonSchedule(lesson.Id);
+
+            if(group.Students.Count != 0)
+            {
+                foreach (Student st in group.Students)
+                {
+                    PointList pointList = new PointList()
+                    {
+                        StudentId = st.Id,
+                        LessonId = lesson.Id
+                    };
+                    await _unit.PointListRepository.AddAsync(pointList);
+                }
+            }
 
             return lesson.Id;
         }
@@ -85,6 +98,9 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
                 };
                 await _unit.LessonScheduleRepository.AddAsync(schedule);
             }
+            await _unit.LessonRepository.UpdateAsync(lesson);
+            lesson.LessonHour = lesson.LessonSchedules.Count();
+            await _unit.SaveChangesAsync();
         }
 
         protected static List<string> PrintSundays(int year, List<int> months, string dayName, string hour)

@@ -13,6 +13,7 @@
         public TeacherInLessonItemDto Teacher { get; set; }
         public List<LessonDayHourInDto> LessonDayHours { get; set; }
         public List<LessonScheduleInLessonItemDto> LessonSchedules { get; set; }
+        public List<PoinListInLessonItemDto> PointLists { get; set; }
     }
     public class GroupInLessonItemDto
     {
@@ -60,5 +61,14 @@
     public class AttendanceInLessonItemDto
     {
         public bool Status { get; set; }
+    }
+    public class PoinListInLessonItemDto
+    {
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public byte SDF1 { get; set; }
+        public byte SDF2 { get; set; }
+        public byte SDF3 { get; set; }
+        public byte TSI { get; set; }
     }
 }

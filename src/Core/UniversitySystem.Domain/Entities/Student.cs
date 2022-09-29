@@ -4,13 +4,6 @@ namespace UniversitySystem.Domain.Entities
 {
     public class Student: BaseEntity
     {
-        //public string Name { get; set; }
-        //public string Surname { get; set; }
-        //public string FatherName { get; set; }
-        //public DateTime Birthday { get; set; }
-        //public int StudentNumber { get; set; }
-        //public string Mail { get; set; }
-        //public DateTime RegistrationDate { get; set; }
         public int DutyId { get; set; }
         public Duty Duty { get; set; }
         public bool Status { get; set; }

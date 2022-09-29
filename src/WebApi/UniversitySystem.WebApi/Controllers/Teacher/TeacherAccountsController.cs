@@ -20,7 +20,7 @@ namespace UniversitySystem.WebApi.Controllers.Teacher
             _usermanager = userManager;
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserLoginCommand command)
+        public async Task<IActionResult> Login([FromForm]UserLoginCommand command)
         {
             string token = await _mediator.Send(command);
             if (token == null) return BadRequest();

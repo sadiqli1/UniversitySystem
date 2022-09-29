@@ -13,11 +13,13 @@ namespace UniversitySystem.Domain.Entities
         public byte SDF2 { get; set; } = 0;
         public byte SDF3 { get; set; } = 0;
         public byte TSI { get; set; } = 0;
-        public byte DVM { get; set; } = 0;
+        public byte AttendanceCount { get; set; } = 0;
+        public byte AttendancePoint { get; set; } = 100;
         public byte SSI { get; set; } = 0;
-        public byte AdditionalExam { get; set; } = 0;
-        public byte ReExam { get; set; } = 0;
-        public byte Average { get; set; } = 0;
+        public byte? AdditionalExam { get; set; }
+        public byte? ReExam { get; set; }
+        public byte Average { get; set; } = 10;
+        public bool Failed { get; set; }
         public int LessonId { get; set; }
         public Lesson Lesson { get; set; }
         public int StudentId { get; set; }

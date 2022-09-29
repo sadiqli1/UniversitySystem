@@ -522,6 +522,9 @@ namespace UniversitySystem.Persistence.Context.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LessonHour")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -775,37 +778,50 @@ namespace UniversitySystem.Persistence.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<byte>("AdditionalExam")
+                    b.Property<byte?>("AdditionalExam")
+                        .HasMaxLength(100)
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte>("AttendanceCount")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte>("AttendancePoint")
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("Average")
                         .HasColumnType("tinyint");
 
-                    b.Property<byte>("DVM")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("Failed")
+                        .HasColumnType("bit");
 
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("ReExam")
+                    b.Property<byte?>("ReExam")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("SDF1")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("SDF2")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("SDF3")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("SSI")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
                     b.Property<byte>("TSI")
+                        .HasMaxLength(100)
                         .HasColumnType("tinyint");
 
                     b.HasKey("Id");
