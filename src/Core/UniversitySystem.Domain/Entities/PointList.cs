@@ -18,7 +18,8 @@ namespace UniversitySystem.Domain.Entities
         public byte SSI { get; set; } = 0;
         public byte? AdditionalExam { get; set; }
         public byte? ReExam { get; set; }
-        public byte Average { get; set; } = 10;
+        public byte Average { get; set; } = 0;
+        public byte ExamEntranceScore { get; set; } = 10;
         public bool Failed { get; set; }
         public int LessonId { get; set; }
         public Lesson Lesson { get; set; }

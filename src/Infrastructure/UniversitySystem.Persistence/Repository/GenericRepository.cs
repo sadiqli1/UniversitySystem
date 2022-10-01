@@ -45,6 +45,18 @@ namespace UniversitySystem.Persistence.Repository
             }
             return value;
         }
+        public async Task<T> GetByExpression(Expression<Func<T, bool>> expression, params string[] includes)
+        {
+            T value = await _dbSet.FirstOrDefaultAsync(expression);
+            if(includes.Length != 0)
+            {
+                foreach (string include in includes)
+                {
+                    value = await _dbSet.Include(include).FirstOrDefaultAsync(expression);
+                }
+            }
+            return value;
+        }
         public virtual async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
@@ -71,5 +83,6 @@ namespace UniversitySystem.Persistence.Repository
         {
             await _context.SaveChangesAsync();
         }
+
     }
 }

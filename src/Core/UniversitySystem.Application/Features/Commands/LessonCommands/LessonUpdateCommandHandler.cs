@@ -24,7 +24,7 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
             Course course = await _unit.CourseRepository.GetByIdAsync(request.CourseId);
             Group group = await _unit.GroupRepository.GetByIdAsync(request.GroupId);
             Teacher teacher = await _unit.TeacherRepository.GetByIdAsync(request.TeacherId);
-            if (course == null || group == null || teacher == null) throw new RelationException() { Code = "relation", Description = "there is no such relation" };
+            if (course == null || group == null || teacher == null) throw new BadRequestException() { Code = "relation", Description = "there is no such relation" };
 
             await _unit.LessonRepository.UpdateAsync(existed);
             Lesson lesson = _mapper.Map<Lesson>(request);

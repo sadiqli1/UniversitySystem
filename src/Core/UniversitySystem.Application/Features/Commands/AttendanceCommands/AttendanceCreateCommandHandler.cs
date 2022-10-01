@@ -27,7 +27,7 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
             Student student = await _unit.StudentRepository.GetByIdAsync(request.StudentId);
             LessonSchedule lessonSchedule = await _unit.LessonScheduleRepository.GetByIdAsync(request.LessonScheduleId);
 
-            if (schedule == null || lesson == null || student == null) throw new RelationException(){ Code = "relation", Description = "there is no such relation"};
+            if (schedule == null || lesson == null || student == null) throw new BadRequestException(){ Code = "relation", Description = "there is no such relation"};
 
             if (lessonSchedule.LessonId != request.LessonId) return -1;
 
@@ -38,18 +38,28 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
             Attendance attendance = _mapper.Map<Attendance>(request);
             await _unit.AttendanceRepository.AddAsync(attendance);
 
-            List<PointList> points = await _unit.PointListRepository.GetAllAsync(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
-            foreach (PointList point in points)
+            PointList pointList = await _unit.PointListRepository.GetByExpression(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
+            List<Attendance> attendances1 = await _unit.AttendanceRepository.GetAllAsync(a => a.StudentId == pointList.StudentId && a.LessonId == pointList.LessonId);
+            int count = default(int);
+            foreach (var item in attendances1)
             {
-                await _unit.PointListRepository.UpdateAsync(point);
-                if(attendance.Status == false)
+                if (item.Status == false)
                 {
-                    point.AttendanceCount += 1;
-                    int a = 100 / point.Lesson.LessonHour;
-                    point.AttendancePoint -= Convert.ToByte(a);
+                    count++;
                 }
-                await _unit.SaveChangesAsync();
             }
+            await _unit.PointListRepository.UpdateAsync(pointList);
+            pointList.AttendanceCount = Convert.ToByte(count);
+            pointList.AttendancePoint = Convert.ToByte(100 - ((count * 100) / pointList.Lesson.LessonHour));
+            if (pointList.AttendancePoint < 75)
+            {
+                pointList.Failed = true;
+            }
+            else
+            {
+                pointList.Failed = false;
+            }
+            await _unit.SaveChangesAsync();
 
             return attendance.Id;
         }

@@ -25,7 +25,7 @@ namespace UniversitySystem.Application.Features.Commands.LessonCommands
             Teacher teacher = await _unit.TeacherRepository.GetByIdAsync(request.TeacherId);
             List<DayHour> dayHours = await _unit.DayHourRepository.GetAllAsync(d => request.DayHourIds.Any(r => r == d.Id));
 
-            if (course == null || group == null || teacher == null || dayHours.Count != request.DayHourIds.Count) throw new RelationException() { Code = "relation", Description = "there is no such relation" };
+            if (course == null || group == null || teacher == null || dayHours.Count != request.DayHourIds.Count) throw new BadRequestException() { Code = "relation", Description = "there is no such relation" };
 
             Lesson lesson = _mapper.Map<Lesson>(request);
 

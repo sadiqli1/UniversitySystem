@@ -46,7 +46,7 @@ namespace UniversitySystem.Application.Middlewares
                     };
                     context.Response.WriteAsJsonAsync(problemDetails);
                     break;
-                case RelationException exception:
+                case BadRequestException exception:
                     var problemDetail = new
                     {
                         exception.Code,

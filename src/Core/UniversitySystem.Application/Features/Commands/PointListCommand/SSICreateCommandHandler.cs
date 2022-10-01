@@ -5,15 +5,15 @@ using UniversitySystem.Domain.Entities;
 
 namespace UniversitySystem.Application.Features.Commands.PointListCommand
 {
-    public class SDF1CreateCommandHandler : IRequestHandler<SDF1CreateCommand, int>
+    public class SSICreateCommandHandler : IRequestHandler<SSICreateCommand, int>
     {
         private readonly IUnitOfWork _unit;
 
-        public SDF1CreateCommandHandler(IUnitOfWork unit)
+        public SSICreateCommandHandler(IUnitOfWork unit)
         {
             _unit = unit;
         }
-        public async Task<int> Handle(SDF1CreateCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(SSICreateCommand request, CancellationToken cancellationToken)
         {
             PointList pointList = await _unit.PointListRepository.GetByExpression(p => p.StudentId == request.StudentId && p.LessonId == request.LessonId);
 
@@ -23,9 +23,18 @@ namespace UniversitySystem.Application.Features.Commands.PointListCommand
 
             await _unit.PointListRepository.UpdateAsync(pointList);
 
-            pointList.SDF1 = request.Point;
-            var average = (pointList.SDF1 * 0.1) + (pointList.SDF2 * 0.1) + (pointList.SDF3 * 0.1) + (pointList.TSI*0.1) + (pointList.AttendancePoint*0.1);
-            pointList.ExamEntranceScore = Convert.ToByte(average);
+            pointList.SSI = request.Point;
+
+            pointList.Average = Convert.ToByte(pointList.ExamEntranceScore + pointList.SSI * 0.5);
+
+            if(pointList.Average < 51)
+            {
+                pointList.Failed = true;
+            }
+            else
+            {
+                pointList.Failed = false;
+            }
 
             await _unit.SaveChangesAsync();
             return pointList.Id;

@@ -20,24 +20,29 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
             attendance.Status = request.Status;
             await _unit.SaveChangesAsync();
 
-            List<PointList> points = await _unit.PointListRepository.GetAllAsync(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
-            foreach (PointList point in points)
+
+            PointList pointList = await _unit.PointListRepository.GetByExpression(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
+            List<Attendance> attendances = await _unit.AttendanceRepository.GetAllAsync(a => a.StudentId == pointList.StudentId && a.LessonId == pointList.LessonId);
+            int count = default(int);
+            foreach (var item in attendances)
             {
-                await _unit.PointListRepository.UpdateAsync(point);
-                if (attendance.Status == true)
+                if(item.Status == false)
                 {
-                    point.AttendanceCount -= 1;
-                    int a = 100 / point.Lesson.LessonHour;
-                    point.AttendancePoint += Convert.ToByte(a);
+                    count++;
                 }
-                if (attendance.Status == false)
-                {
-                    point.AttendanceCount += 1;
-                    int a = 100 / point.Lesson.LessonHour;
-                    point.AttendancePoint -= Convert.ToByte(a);
-                }
-                await _unit.SaveChangesAsync();
             }
+            await _unit.PointListRepository.UpdateAsync(pointList);
+            pointList.AttendanceCount = Convert.ToByte(count);
+            pointList.AttendancePoint = Convert.ToByte(100 - ((count * 100) / pointList.Lesson.LessonHour));
+            if(pointList.AttendancePoint < 75)
+            {
+                pointList.Failed = true;
+            }
+            else
+            {
+                pointList.Failed = false;
+            }
+            await _unit.SaveChangesAsync();
 
             return attendance.Id;
         }

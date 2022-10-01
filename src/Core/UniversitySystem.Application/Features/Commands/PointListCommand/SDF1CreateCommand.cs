@@ -4,7 +4,8 @@ namespace UniversitySystem.Application.Features.Commands.PointListCommand
 {
     public class SDF1CreateCommand: IRequest<int>
     {
-        public int Id;
+        public int StudentId;
+        public int LessonId;
         public byte Point { get; set; }
     }
 }
