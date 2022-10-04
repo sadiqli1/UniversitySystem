@@ -20,7 +20,6 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
             attendance.Status = request.Status;
             await _unit.SaveChangesAsync();
 
-
             PointList pointList = await _unit.PointListRepository.GetByExpression(p => p.StudentId == attendance.StudentId && p.LessonId == attendance.LessonId, "Lesson");
             List<Attendance> attendances = await _unit.AttendanceRepository.GetAllAsync(a => a.StudentId == pointList.StudentId && a.LessonId == pointList.LessonId);
             int count = default(int);

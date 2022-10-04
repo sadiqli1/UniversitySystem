@@ -21,6 +21,8 @@ namespace UniversitySystem.Application.Features.Commands.PointListCommand
 
             if (pointList.Failed == false) throw new BadRequestException() { Code = "Not Failing", Description = "this student is not failing" };
 
+            if(pointList.AttendancePoint < 75) throw new BadRequestException() { Code = "failed", Description = "this student failed due to truancy" };
+
             await _unit.PointListRepository.UpdateAsync(pointList);
 
             pointList.AdditionalExam = request.Point;

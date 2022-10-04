@@ -19,7 +19,7 @@ namespace UniversitySystem.Application.Features.Commands.PointListCommand
 
             if (pointList == null) return 0;
 
-            if (pointList.Failed == true) throw new BadRequestException() { Code = "failed", Description = "this student failed" };
+            if (pointList.AttendancePoint < 75) throw new BadRequestException() { Code = "failed", Description = "this student failed due to truancy" };
 
             await _unit.PointListRepository.UpdateAsync(pointList);
 
