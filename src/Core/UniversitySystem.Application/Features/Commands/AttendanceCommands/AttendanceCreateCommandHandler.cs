@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using UniversitySystem.Application.CustomException;
 using UniversitySystem.Application.Interfaces;
 using UniversitySystem.Domain.Entities;
@@ -10,14 +11,22 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
     {
         private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
+        private readonly UserManager<Person> _usermanager;
 
-        public AttendanceCreateCommandHandler(IUnitOfWork unit, IMapper mapper)
+        public AttendanceCreateCommandHandler(IUnitOfWork unit, IMapper mapper, UserManager<Person> userManager)
         {
             _unit = unit;
             _mapper = mapper;
+            _usermanager = userManager;
         }
         public async Task<int> Handle(AttendanceCreateCommand request, CancellationToken cancellationToken)
         {
+            Person person = await _usermanager.FindByNameAsync(request.TeacherUsername);
+            if (person == null) throw new BadRequestException() { Code = "Not Found", Description = "No such student exists" };
+
+            Teacher teacher = await _unit.TeacherRepository.GetByExpression(t => t.PersonId == person.Id && t.Lessons.Any(x => x.Id == request.LessonId));
+            if (teacher == null) throw new BadRequestException() { Code = "relation", Description = "this teacher does not teach this class" };
+
             List<Attendance> attendances = await _unit.AttendanceRepository
                 .GetAllAsync(a => a.StudentId == request.StudentId && a.LessonScheduleId == request.LessonScheduleId && a.LessonId == request.LessonId);
             if(attendances.Count != 0) return -3;

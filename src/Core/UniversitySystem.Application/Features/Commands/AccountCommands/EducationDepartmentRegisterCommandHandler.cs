@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using UniversitySystem.Application.CustomException;
 using UniversitySystem.Application.DTOs.Account;
 using UniversitySystem.Application.Interfaces;
 using UniversitySystem.Domain.Entities;
@@ -25,7 +26,7 @@ namespace UniversitySystem.Application.Features.Commands.AccountCommands
         {
             Person edu = await _usermanager.FindByNameAsync(request.PersonalNumber);
 
-            if (edu != null) return null;
+            if (edu != null) throw new BadRequestException() { Code = "existed", Description = "there is a edu with this personalnumber" };
 
             Person person = new()
             {
@@ -46,10 +47,10 @@ namespace UniversitySystem.Application.Features.Commands.AccountCommands
 
             IdentityResult result = await _usermanager.CreateAsync(person, request.Password);
 
-            if (!result.Succeeded) return null;
+            if (!result.Succeeded) throw new NotSucceededException(result.Errors.ToList());
 
             IdentityResult resultRole = await _usermanager.AddToRoleAsync(person, "EducationDepartment");
-            if (!resultRole.Succeeded) return null;
+            if (!resultRole.Succeeded) throw new NotSucceededException(result.Errors.ToList());
 
             PersonRegisterDto dto = _mapper.Map<PersonRegisterDto>(person);
             dto.PersonalNumber = person.UserName;

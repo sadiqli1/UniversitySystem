@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using UniversitySystem.Application.Features.Commands.TeacherAccountCommand;
+using UniversitySystem.Application.Features.Commands.UserAccountCommand;
 
 namespace UniversitySystem.Application.Validators.TeacherAccount
 {

@@ -7,6 +7,8 @@ using UniversitySystem.Application.DTOs.Lesson;
 using UniversitySystem.Application.DTOs.Section;
 using UniversitySystem.Application.DTOs.Sector;
 using UniversitySystem.Application.DTOs.Specialization;
+using UniversitySystem.Application.DTOs.Student;
+using UniversitySystem.Application.DTOs.Teacher;
 using UniversitySystem.Application.Features.Commands.AttendanceCommands;
 using UniversitySystem.Application.Features.Commands.FacultyCommands;
 using UniversitySystem.Application.Features.Commands.GroupCommands;
@@ -45,8 +47,6 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<Group, GroupItemDto>();
             CreateMap<Specialization, SpecializationInGroup>();
             CreateMap<Course, CourseInGroup>();
-            CreateMap<Teacher, TeacherInGroup>();
-            CreateMap<Person, PersonInTeacher>();
             CreateMap<Group, GroupCreateCommand>()
                 .ReverseMap();
             CreateMap<Group, GroupUpdateCommand>()
@@ -58,10 +58,10 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<LessonCreateCommand, LessonPostDto>()
                 .ReverseMap();
             CreateMap<Lesson, LessonItemDto>();
-            CreateMap<Group, GroupInLessonItemDto>();
-            CreateMap<Course, CourseInLessonItemDto>();
             CreateMap<Teacher, TeacherInLessonItemDto>();
             CreateMap<Person, PersonInTeacherInLessonItemDto>();
+            CreateMap<Group, GroupInLessonItemDto>();
+            CreateMap<Course, CourseInLessonItemDto>();
             CreateMap<LessonDayHour, LessonDayHourInDto>();
             CreateMap<DayHour, DayHourInLessonDayHourInDto>();
             CreateMap<Day, DayInDto>();
@@ -71,6 +71,29 @@ namespace UniversitySystem.Application.Mapping
             CreateMap<LessonSchedule, LessonScheduleInLessonItemDto>();
             CreateMap<AttendanceUpdateItemDto, AttendanceUpdateCommand>();
             CreateMap<PointList, PoinListInLessonItemDto>();
+            CreateMap<PointList, StudentGradesDto>();
+            CreateMap<PointList, StudentEJurnalDto>();
+            CreateMap<Lesson, LessonInStudentEJurnalDto>();
+            CreateMap<Teacher, TeacherLessonInStudentEJurnalDto>();
+            CreateMap<Person, PersonInTeacherLessonInStudentEJurnalDto>();
+            CreateMap<LessonSchedule, StudentEJurnalDetailDto>();
+            CreateMap<Attendance, AttendanceInStudentEJurnalDetailDto>();
+            CreateMap<Teacher, TeacherItemDto>();
+            CreateMap<Person, PersonInTeacherItemDto>();
+            CreateMap<Section, SectionInTeacherItemDto>();
+            CreateMap<Lesson, TchLessonItemDto>();
+            CreateMap<Group, GroupInTechLessonItemDto>();
+            CreateMap<Course, CourseInTechLessonItemDto>();
+            CreateMap<LessonDayHour, TechLessonDayHourInDto>();
+            CreateMap<LessonSchedule, LessonScheduleInTechLessonItemDto>();
+            CreateMap<PointList, PoinListIntechLessonItemDto>();
+            CreateMap<DayHour, DayHourInTechLessonDayHourInDto>();
+            CreateMap<Day, TechDayInDto>();
+            CreateMap<Hour, TechHourInDto>();
+            CreateMap<DayHour, DaysGetDto>();
+            CreateMap<Day, DayInDaysGetDto>();
+            CreateMap<Hour, HourInDaysGetDto>();
+            CreateMap<LessonSchedule, LessonScheduleDto>();
         }
     }
 }

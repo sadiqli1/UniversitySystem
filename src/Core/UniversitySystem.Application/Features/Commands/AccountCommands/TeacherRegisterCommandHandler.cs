@@ -24,7 +24,7 @@ namespace UniversitySystem.Application.Features.Commands.AccountCommands
         {
             Person teacher = await _usermanager.FindByNameAsync(request.PersonalNumber);
 
-            if (teacher != null) return null;
+            if (teacher != null) throw new BadRequestException() { Code = "existed", Description = "there is a teacher with this personalnumber" };
 
             Person person = new()
             {
@@ -49,7 +49,7 @@ namespace UniversitySystem.Application.Features.Commands.AccountCommands
             if (!result.Succeeded) throw new NotSucceededException(result.Errors.ToList());
 
             IdentityResult resultRole = await _usermanager.AddToRoleAsync(person, "Teacher");
-            if(!resultRole.Succeeded) return null;
+            if(!resultRole.Succeeded) throw new NotSucceededException(result.Errors.ToList());
 
             PersonRegisterDto dto = _mapper.Map<PersonRegisterDto>(person);
             dto.PersonalNumber = person.UserName;

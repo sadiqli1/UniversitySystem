@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public SpecializationInGroup Specialization { get; set; }
         public CourseInGroup Course { get; set; }
-        public TeacherInGroup Teacher { get; set; }
+        //public TeacherInGroup Teacher { get; set; }
     }
     public class SpecializationInGroup
     {
@@ -20,13 +20,13 @@
         public byte Cours { get; set; }
         public byte Semester { get; set; }
     }
-    public class TeacherInGroup
-    {
-        public PersonInTeacher Person { get; set; }
-    }
-    public class PersonInTeacher
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-    }
+    //public class TeacherInGroup
+    //{
+    //    public PersonInTeacher Person { get; set; }
+    //}
+    //public class PersonInTeacher
+    //{
+    //    public string Name { get; set; }
+    //    public string Surname { get; set; }
+    //}
 }

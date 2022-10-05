@@ -7,6 +7,6 @@ namespace UniversitySystem.Domain.Entities
         public DateTime Date { get; set; }
         public int LessonId { get; set; }
         public Lesson Lesson { get; set; }
-        public List<Attendance> Attendances { get; set; }
+        public Attendance Attendance { get; set; }
     }
 }

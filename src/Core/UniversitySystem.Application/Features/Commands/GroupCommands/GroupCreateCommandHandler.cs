@@ -18,12 +18,11 @@ namespace UniversitySystem.Application.Features.Commands.GroupCommands
         public async Task<int> Handle(GroupCreateCommand request, CancellationToken cancellationToken)
         {
             List<Group> existed = await _unit.GroupRepository
-                .GetAllAsync(g => g.Name.Trim().ToLower() == request.Name.Trim().ToLower(), "Specialization", "Course", "Teacher", "Teacher.Person");
+                .GetAllAsync(g => g.Name.Trim().ToLower() == request.Name.Trim().ToLower(), "Specialization", "Course");
             if (existed.Count != 0) return 0;
-            Specialization specialization = await _unit.SpecializationRepository.GetByIdAsync(request.SpecializationId);
+            Specialization specialization = await _unit.SpecializationRepository.GetByIdAsync(request.SpecializationId);    
             Course course = await _unit.CourseRepository.GetByIdAsync(request.CourseId);
-            Teacher teacher = await _unit.TeacherRepository.GetByIdAsync(request.TeacherId);
-            if(specialization == null || course == null || teacher == null) return -1;
+            if(specialization == null || course == null) return -1;
             Group group = _mapper.Map<Group>(request);
             await _unit.GroupRepository.AddAsync(group);
             return group.Id;

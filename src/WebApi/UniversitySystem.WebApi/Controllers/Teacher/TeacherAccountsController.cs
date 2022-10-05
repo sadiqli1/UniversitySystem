@@ -2,13 +2,15 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using UniversitySystem.Application.Features.Commands.TeacherAccountCommand;
+using UniversitySystem.Application.Features.Commands.UserAccountCommand;
+using UniversitySystem.Application.Features.Queries.TeacherQueries;
 using UniversitySystem.Domain.Entities;
 
 namespace UniversitySystem.WebApi.Controllers.Teacher
 {
     [Route("tech/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Teacher, Admin")]
     public class TeacherAccountsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -26,12 +28,15 @@ namespace UniversitySystem.WebApi.Controllers.Teacher
             if (token == null) return BadRequest();
             return Ok(token);
         }
-        [HttpGet("data")]
-        [Authorize]
-        public async Task<IActionResult> Data()
+        [HttpGet("home")]
+        public async Task<IActionResult> Home([FromQuery] TeacherGetQuery query)
         {
-            Person person = await _usermanager.FindByNameAsync("190120006");
-            return Ok(person);
+            return Ok(await _mediator.Send(query));
+        }
+        [HttpGet("lesson")]
+        public async Task<IActionResult> LessonGet([FromQuery]LessonGetQuery query)
+        {
+            return Ok(await _mediator.Send(query));
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UniversitySystem.Application.DTOs.Account;
 using UniversitySystem.Application.Features.Commands.AccountCommands;
+using UniversitySystem.Application.Features.Commands.UserAccountCommand;
 using UniversitySystem.Domain.Entities;
 
 namespace UniversitySystem.WebApi.Controllers
@@ -12,14 +14,22 @@ namespace UniversitySystem.WebApi.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly Microsoft.AspNetCore.Identity.RoleManager<IdentityRole> _rolemanager;
+        private readonly RoleManager<IdentityRole> _rolemanager;
 
         public AccountsController(IMediator mediator, RoleManager<IdentityRole> roleManager)
         {
             _mediator = mediator;
             _rolemanager = roleManager;
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserLoginCommand command)
+        {
+            string token = await _mediator.Send(command);
+            if (token == null) return BadRequest();
+            return Ok(token);
+        }
         [HttpPost("teacherregister")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> TeacherRegister(TeacherRegisterCommand command)
         {
             PersonRegisterDto dto = await _mediator.Send(command);
@@ -29,6 +39,7 @@ namespace UniversitySystem.WebApi.Controllers
             return StatusCode(StatusCodes.Status201Created, dto);
         }
         [HttpPost("studentregister")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> StudentRegister(StudentRegisterCommand command)
         {
             PersonRegisterDto dto = await _mediator.Send(command);
@@ -37,8 +48,9 @@ namespace UniversitySystem.WebApi.Controllers
 
             return StatusCode(StatusCodes.Status201Created, dto);
         }
-        [HttpPost("librarianregister")]
-        public async Task<IActionResult> LibrarianRegister(LibrarianRegisterCommand command)
+        [HttpPost("educationdepartmentregister")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EducationDepartmentRegister(EducationDepartmentRegisterCommand command)
         {
             PersonRegisterDto dto = await _mediator.Send(command);
 
@@ -46,8 +58,9 @@ namespace UniversitySystem.WebApi.Controllers
 
             return StatusCode(StatusCodes.Status201Created, dto);
         }
-        [HttpPost("educationdepartmentregister")]
-        public async Task<IActionResult> EducationDepartmentRegister(EducationDepartmentRegisterCommand command)
+        [HttpPost("tyutorregister")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> TyutorRegister(TyutorRegisterCommand command)
         {
             PersonRegisterDto dto = await _mediator.Send(command);
 
@@ -60,12 +73,12 @@ namespace UniversitySystem.WebApi.Controllers
         //[HttpGet]
         //public async Task<IActionResult> CreateRole()
         //{
-        //    await _rolemanager.CreateAsync(new IdentityRole("Student"));
-        //    await _rolemanager.CreateAsync(new IdentityRole("Teacher"));
-        //    await _rolemanager.CreateAsync(new IdentityRole("Tytor"));
-        //    await _rolemanager.CreateAsync(new IdentityRole("Dean"));
-        //    await _rolemanager.CreateAsync(new IdentityRole("Librarian"));
-        //    await _rolemanager.CreateAsync(new IdentityRole("EducationDepartment"));
+            //await _rolemanager.CreateAsync(new IdentityRole("Admin"));
+            //await _rolemanager.CreateAsync(new IdentityRole("Student"));
+            //await _rolemanager.CreateAsync(new IdentityRole("Teacher"));
+            //await _rolemanager.CreateAsync(new IdentityRole("Tytor"));
+            //await _rolemanager.CreateAsync(new IdentityRole("Dean"));
+            //await _rolemanager.CreateAsync(new IdentityRole("EducationDepartment"));
 
         //    return NoContent();
         //}

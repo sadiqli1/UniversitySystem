@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UniversitySystem.Application.Features.Commands.TeacherAccountCommand;
+using UniversitySystem.Application.Features.Commands.UserAccountCommand;
 
 namespace UniversitySystem.WebApi.Controllers.EducationDepartment
 {

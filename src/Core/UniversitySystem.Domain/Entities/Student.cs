@@ -15,8 +15,6 @@ namespace UniversitySystem.Domain.Entities
         public int GroupId { get; set; }
         public Group Group { get; set; }
         public List<PointList> PointLists { get; set; }
-        public List<Transcript> Transcripts { get; set; }
-        public List<Reference> References { get; set; }
         public string PersonId { get; set; }
         public Person Person { get; set; }
         public List<Attendance> Attendances { get; set; }

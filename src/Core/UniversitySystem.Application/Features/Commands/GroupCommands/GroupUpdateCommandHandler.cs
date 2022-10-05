@@ -24,8 +24,7 @@ namespace UniversitySystem.Application.Features.Commands.GroupCommands
             if (groups.Count != 0) return 0;
             Specialization specialization = await _unit.SpecializationRepository.GetByIdAsync(request.SpecializationId);
             Course course = await _unit.CourseRepository.GetByIdAsync(request.CourseId);
-            Teacher teacher = await _unit.TeacherRepository.GetByIdAsync(request.TeacherId);
-            if (specialization == null || course == null || teacher == null) return -1;
+            if (specialization == null || course == null) return -1;
             await _unit.GroupRepository.UpdateAsync(existed);
             Group group = _mapper.Map<Group>(request);
             await _unit.SaveChangesAsync();

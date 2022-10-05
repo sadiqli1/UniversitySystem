@@ -29,7 +29,7 @@ namespace UniversitySystem.Persistence.ServiceRegistration
             services.AddIdentity<Person, IdentityRole>(opt =>
             {
                 opt.User.RequireUniqueEmail = true;
-                opt.User.AllowedUserNameCharacters = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+                opt.User.AllowedUserNameCharacters = "0123456789";
 
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequiredLength = 6;

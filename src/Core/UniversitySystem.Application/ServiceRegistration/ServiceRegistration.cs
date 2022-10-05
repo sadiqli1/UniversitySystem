@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using UniversitySystem.Application.DTOs.Sector;
+using UniversitySystem.Application.Interfaces.Repository;
 using UniversitySystem.Application.Mapping;
 
 namespace UniversitySystem.Application.ServiceRegistration
@@ -33,6 +34,8 @@ namespace UniversitySystem.Application.ServiceRegistration
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(cfg =>
             {
+                cfg.SaveToken = true;
+                cfg.RequireHttpsMetadata = false;
                 cfg.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidIssuer = configuration["Jwt:Issuer"],

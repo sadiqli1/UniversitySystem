@@ -8,5 +8,6 @@ namespace UniversitySystem.Application.Features.Commands.AttendanceCommands
         public int LessonId { get; set; }
         public int StudentId { get; set; }
         public int LessonScheduleId { get; set; }
+        public string TeacherUsername { get; set; }
     }
 }

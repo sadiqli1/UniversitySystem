@@ -18,7 +18,7 @@ namespace UniversitySystem.Application.Features.Queries.GroupQueries
         }
         public async Task<GroupItemDto> Handle(GroupGetQuery request, CancellationToken cancellationToken)
         {
-            Group group = await _unit.GroupRepository.GetByIdAsync(request.Id, "Specialization", "Course", "Teacher", "Teacher.Person");
+            Group group = await _unit.GroupRepository.GetByIdAsync(request.Id, "Specialization", "Course");
             GroupItemDto dto = _mapper.Map<GroupItemDto>(group);
             return dto;
         }
