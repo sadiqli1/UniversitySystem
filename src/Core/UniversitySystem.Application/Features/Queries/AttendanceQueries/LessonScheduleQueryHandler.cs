@@ -19,9 +19,9 @@ namespace UniversitySystem.Application.Features.Queries.AttendanceQueries
         }
         public async Task<List<LessonScheduleDto>> Handle(LessonScheduleQuery request, CancellationToken cancellationToken)
         {
-            List<LessonSchedule> existed = await _unit.LessonScheduleRepository.GetAllAsync(l => l.LessonId == request.lessonId);
-            if (existed.Count == 0) throw new BadRequestException() { Code = "not found", Description = "not found"};
-            List<LessonScheduleDto> dtos = _mapper.Map<List<LessonScheduleDto>>(existed);
+            List<LessonSchedule> schedules = await _unit.LessonScheduleRepository.GetAllAsync(l => l.LessonId == request.lessonId, "Attendance");
+            if (schedules == null) throw new BadRequestException() { Code = "Not Found", Description = "No such student exists" };
+            List<LessonScheduleDto> dtos = _mapper.Map<List<LessonScheduleDto>>(schedules);
             return dtos;
         }
     }

@@ -73,7 +73,9 @@ namespace UniversitySystem.WebApi.Controllers
         [HttpGet("lessonSchedule")]
         public async Task<IActionResult> LessonSchedule(int lessonId)
         {
-            return Ok(_mediator.Send(new LessonScheduleQuery(lessonId)));
+            LessonScheduleQuery query = new LessonScheduleQuery();
+            query.lessonId = lessonId;
+            return Ok(await _mediator.Send(query));
         }
     }
 }

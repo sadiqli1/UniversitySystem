@@ -6,9 +6,5 @@ namespace UniversitySystem.Application.Features.Queries.AttendanceQueries
     public class LessonScheduleQuery: IRequest<List<LessonScheduleDto>>
     {
         public int lessonId;
-        public LessonScheduleQuery(int LessonId)
-        {
-            LessonId = lessonId;
-        }
     }
 }
